@@ -80,6 +80,8 @@ struct ContentView: View {
                     .foregroundStyle(.white)
                     .font(.title.bold())
                 
+                Spacer()
+                
             }
             .padding()
         }
