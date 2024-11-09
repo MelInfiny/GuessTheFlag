@@ -23,11 +23,16 @@ struct ContentView: View {
     }
     func flagTap(_ number: Int) {
         if number == correctAnswer {
-            scoreTitle = "Correct"
             score += 1
+            if score == 8 {
+                scoreTitle = "Congrats winner !\n You are a true flag enthusiast !"
+                score = 0
+            } else {
+                scoreTitle = "Correct\nYou are doing well !"
+            }
             
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong answer\n That's the flag of \(countries[number]) ! Keep trying!"
         }
         showingScore = true
     }
@@ -65,7 +70,7 @@ struct ContentView: View {
                         }
                     }
                     .alert(scoreTitle, isPresented: $showingScore) {
-                        Button("Play again", action: askQuestion)
+                            Button("Play again", action: askQuestion)
                     }
                 }
                 .frame(maxWidth: .infinity)
